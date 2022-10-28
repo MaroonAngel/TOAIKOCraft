@@ -29,9 +29,9 @@ displayName="Aquarism" #mandatory
 # A file name (in the root of the mod JAR) containing a logo for display
 logoFile="aquarism.png" #optional
 # A text field displayed in the mod UI
-credits="TAIKO, MaroonAngel" #optional
+credits="TOAIKO, MaroonAngel" #optional
 # A text field displayed in the mod UI
-authors="TAIKO, MaroonAngel" #optional
+authors="TOAIKO, MaroonAngel" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''
 This mod contains lots of fish!

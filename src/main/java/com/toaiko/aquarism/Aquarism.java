@@ -1,7 +1,12 @@
-package net.taikomods.aquarism;
+package com.toaiko.aquarism;
 
+import com.toaiko.aquarism.init.ModEntityType;
+import com.toaiko.aquarism.init.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -23,7 +28,14 @@ import java.util.stream.Collectors;
 public class Aquarism
 {
     // Directly reference a log4j logger.
-    private static final Logger LOGGER = LogManager.getLogger();
+    public static final Logger LOGGER = LogManager.getLogger();
+    public static final String MOD_ID = "aquarism";
+    public static final ItemGroup TAB = new ItemGroup("aquarismTab") {
+        @Override
+        public ItemStack makeIcon() {
+            return new ItemStack(Items.COD_BUCKET);
+        }
+    };
 
     public Aquarism() {
         // Register the setup method for modloading
@@ -35,6 +47,9 @@ public class Aquarism
         // Register the doClientStuff method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
 
+        ModItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ModEntityType.ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
+
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -42,7 +57,7 @@ public class Aquarism
     private void setup(final FMLCommonSetupEvent event)
     {
         // some preinit code
-        LOGGER.info("HELLO FROM PRE-INIT");
+        LOGGER.info("AQUARISM: Initializing...");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
     }
 
