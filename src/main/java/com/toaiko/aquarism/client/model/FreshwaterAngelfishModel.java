@@ -1,65 +1,109 @@
-package com.toaiko.aquarism.client.model;// Made with Blockbench 4.4.3
-// Exported for Minecraft version 1.17 - 1.18 with Mojang mappings
-// Paste this class into your mod and generate all required imports
+package com.toaiko.aquarism.client.model;
+// Made with Blockbench 4.4.3
 
-
+import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.IVertexBuilder;
 import com.toaiko.aquarism.entities.FreshwaterAngelfishEntity;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.entity.Entity;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.MathHelper;
 
 public class FreshwaterAngelfishModel<T extends FreshwaterAngelfishEntity> extends EntityModel<T> {
-    // This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "custom_model"), "main");
     private final ModelRenderer Body;
     private final ModelRenderer BackFin;
     private final ModelRenderer bb_main;
+    private final ModelRenderer cube_r1;
+    private final ModelRenderer RightPectoralFin_r1;
+    private final ModelRenderer LeftPectoralFin_r1;
+    private final ModelRenderer RightStreamerFin_r1;
+    private final ModelRenderer LeftStreamerFin_r1;
+    private final ModelRenderer TopFin_r1;
+    private final ModelRenderer BottomFin_r1;
+    private final ModelRenderer Body_r1;
 
-    public FreshwaterAngelfishModel(ModelPart root) {
-        this.Body = root.getChild("Body");
-        this.BackFin = root.getChild("BackFin");
-        this.bb_main = root.getChild("bb_main");
-    }
+    public FreshwaterAngelfishModel() {
+        texWidth = 16;
+        texHeight = 16;
 
-    public static LayerDefinition createBodyLayer() {
-        MeshDefinition meshdefinition = new MeshDefinition();
-        PartDefinition partdefinition = meshdefinition.getRoot();
+        Body = new ModelRenderer(this);
+        Body.setPos(0.0F, 24.0F, 0.0F);
 
-        PartDefinition Body = partdefinition.addOrReplaceChild("Body", CubeListBuilder.create(), PartPose.offset(0.0F, 24.0F, 0.0F));
+        BackFin = new ModelRenderer(this);
+        BackFin.setPos(0.0F, 24.0F, 0.0F);
 
-        PartDefinition BackFin = partdefinition.addOrReplaceChild("BackFin", CubeListBuilder.create(), PartPose.offset(0.0F, 24.0F, 0.0F));
+        cube_r1 = new ModelRenderer(this);
+        cube_r1.setPos(0.0F, 0.0F, 0.0F);
+        BackFin.addChild(cube_r1);
+        setRotationAngle(cube_r1, -0.7854F, 0.0F, 0.0F);
+        cube_r1.texOffs(9, 7).addBox(-0.5F, -7.5F, -2.5F, 0.0F, 3.0F, 3.0F, 0.0F, false);
 
-        PartDefinition cube_r1 = BackFin.addOrReplaceChild("cube_r1", CubeListBuilder.create().texOffs(9, 7).addBox(-0.5F, -7.5F, -2.5F, 0.0F, 3.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, -0.7854F, 0.0F, 0.0F));
+        bb_main = new ModelRenderer(this);
+        bb_main.setPos(0.0F, 24.0F, 0.0F);
 
-        PartDefinition bb_main = partdefinition.addOrReplaceChild("bb_main", CubeListBuilder.create(), PartPose.offset(0.0F, 24.0F, 0.0F));
 
-        PartDefinition RightPectoralFin_r1 = bb_main.addOrReplaceChild("RightPectoralFin_r1", CubeListBuilder.create().texOffs(8, 12).addBox(-1.15F, -6.0F, 0.0F, 0.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, -0.5236F, 0.0F));
+        RightPectoralFin_r1 = new ModelRenderer(this);
+        RightPectoralFin_r1.setPos(0.0F, 0.0F, 0.0F);
+        bb_main.addChild(RightPectoralFin_r1);
+        setRotationAngle(RightPectoralFin_r1, 0.0F, -0.5236F, 0.0F);
+        RightPectoralFin_r1.texOffs(8, 12).addBox(-1.15F, -6.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, false);
 
-        PartDefinition LeftPectoralFin_r1 = bb_main.addOrReplaceChild("LeftPectoralFin_r1", CubeListBuilder.create().texOffs(8, 12).addBox(0.25F, -6.0F, -0.5F, 0.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, 0.5236F, 0.0F));
+        LeftPectoralFin_r1 = new ModelRenderer(this);
+        LeftPectoralFin_r1.setPos(0.0F, 0.0F, 0.0F);
+        bb_main.addChild(LeftPectoralFin_r1);
+        setRotationAngle(LeftPectoralFin_r1, 0.0F, 0.5236F, 0.0F);
+        LeftPectoralFin_r1.texOffs(8, 12).addBox(0.25F, -6.0F, -0.5F, 0.0F, 2.0F, 2.0F, 0.0F, false);
 
-        PartDefinition RightStreamerFin_r1 = bb_main.addOrReplaceChild("RightStreamerFin_r1", CubeListBuilder.create().texOffs(4, 0).addBox(-1.25F, -4.0F, -1.0F, 0.0F, 4.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0873F));
+        RightStreamerFin_r1 = new ModelRenderer(this);
+        RightStreamerFin_r1.setPos(0.0F, 0.0F, 0.0F);
+        bb_main.addChild(RightStreamerFin_r1);
+        setRotationAngle(RightStreamerFin_r1, 0.0F, 0.0F, 0.0873F);
+        RightStreamerFin_r1.texOffs(4, 0).addBox(-1.25F, -4.0F, -1.0F, 0.0F, 4.0F, 1.0F, 0.0F, false);
 
-        PartDefinition LeftStreamerFin_r1 = bb_main.addOrReplaceChild("LeftStreamerFin_r1", CubeListBuilder.create().texOffs(4, 0).addBox(0.25F, -4.0F, -1.0F, 0.0F, 4.0F, 1.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, -0.0873F));
+        LeftStreamerFin_r1 = new ModelRenderer(this);
+        LeftStreamerFin_r1.setPos(0.0F, 0.0F, 0.0F);
+        bb_main.addChild(LeftStreamerFin_r1);
+        setRotationAngle(LeftStreamerFin_r1, 0.0F, 0.0F, -0.0873F);
+        LeftStreamerFin_r1.texOffs(4, 0).addBox(0.25F, -4.0F, -1.0F, 0.0F, 4.0F, 1.0F, 0.0F, false);
 
-        PartDefinition TopFin_r1 = bb_main.addOrReplaceChild("TopFin_r1", CubeListBuilder.create().texOffs(6, -5).addBox(-0.5F, -3.5F, 5.0F, 0.0F, 3.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 1.0908F, 0.0F, 0.0F));
+        TopFin_r1 = new ModelRenderer(this);
+        TopFin_r1.setPos(0.0F, 0.0F, 0.0F);
+        bb_main.addChild(TopFin_r1);
+        setRotationAngle(TopFin_r1, 1.0908F, 0.0F, 0.0F);
+        TopFin_r1.texOffs(6, -5).addBox(-0.5F, -3.5F, 5.0F, 0.0F, 3.0F, 5.0F, 0.0F, false);
 
-        PartDefinition BottomFin_r1 = bb_main.addOrReplaceChild("BottomFin_r1", CubeListBuilder.create().texOffs(6, 1).addBox(-0.5F, -4.5F, -4.0F, 0.0F, 3.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, -1.0908F, 0.0F, 0.0F));
+        BottomFin_r1 = new ModelRenderer(this);
+        BottomFin_r1.setPos(0.0F, 0.0F, 0.0F);
+        bb_main.addChild(BottomFin_r1);
+        setRotationAngle(BottomFin_r1, -1.0908F, 0.0F, 0.0F);
+        BottomFin_r1.texOffs(6, 1).addBox(-0.5F, -4.5F, -4.0F, 0.0F, 3.0F, 5.0F, 0.0F, false);
 
-        PartDefinition Body_r1 = bb_main.addOrReplaceChild("Body_r1", CubeListBuilder.create().texOffs(0, 7).addBox(-1.0F, -5.0F, -5.0F, 1.0F, 3.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, -0.7854F, 0.0F, 0.0F));
-
-        return LayerDefinition.create(meshdefinition, 16, 16);
+        Body_r1 = new ModelRenderer(this);
+        Body_r1.setPos(0.0F, 0.0F, 0.0F);
+        bb_main.addChild(Body_r1);
+        setRotationAngle(Body_r1, -0.7854F, 0.0F, 0.0F);
+        Body_r1.texOffs(0, 7).addBox(-1.0F, -5.0F, -5.0F, 1.0F, 3.0F, 3.0F, 0.0F, false);
     }
 
     @Override
-    public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+        float f = 1.0F;
+        if (!entityIn.isInWater()) {
+            f = 1.5F;
+        }
 
+        this.BackFin.yRot = -f * 0.45F * MathHelper.sin(0.6F * ageInTicks);
     }
 
     @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        Body.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-        BackFin.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-        bb_main.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+    public void renderToBuffer(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
+        Body.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+        BackFin.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+        bb_main.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+    }
+
+    public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
+        modelRenderer.xRot = x;
+        modelRenderer.yRot = y;
+        modelRenderer.zRot = z;
     }
 }

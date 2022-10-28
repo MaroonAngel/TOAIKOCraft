@@ -1,6 +1,9 @@
 package com.toaiko.aquarism.entities;
 
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.passive.fish.AbstractGroupFishEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -10,8 +13,14 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
 
 public class FreshwaterAngelfishEntity extends AbstractGroupFishEntity {
-    public FreshwaterAngelfishEntity(EntityType<? extends AbstractGroupFishEntity> p_i49856_1_, World p_i49856_2_) {
-        super(p_i49856_1_, p_i49856_2_);
+    public FreshwaterAngelfishEntity(EntityType<? extends AbstractGroupFishEntity> type, World world) {
+        super(type, world);
+    }
+
+    public static AttributeModifierMap.MutableAttribute setCustomAttributes() {
+        return MobEntity.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 5.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.5D);
     }
 
     @Override
