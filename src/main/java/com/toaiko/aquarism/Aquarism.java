@@ -48,7 +48,7 @@ public class Aquarism
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
 
         ModItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        ModEntityType.ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ModEntityType.ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);

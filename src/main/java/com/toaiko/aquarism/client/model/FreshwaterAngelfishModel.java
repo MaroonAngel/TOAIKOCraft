@@ -29,29 +29,29 @@ public class FreshwaterAngelfishModel<T extends FreshwaterAngelfishEntity> exten
         Body.setPos(0.0F, 24.0F, 0.0F);
 
         BackFin = new ModelRenderer(this);
-        BackFin.setPos(0.0F, 24.0F, 0.0F);
+        BackFin.setPos(-0.5F, 19.0F, 2.0F);
 
         cube_r1 = new ModelRenderer(this);
         cube_r1.setPos(0.0F, 0.0F, 0.0F);
         BackFin.addChild(cube_r1);
         setRotationAngle(cube_r1, -0.7854F, 0.0F, 0.0F);
-        cube_r1.texOffs(9, 7).addBox(-0.5F, -7.5F, -2.5F, 0.0F, 3.0F, 3.0F, 0.0F, false);
+        cube_r1.texOffs(9, 7).addBox(0.0F, -2.5503F, -0.3787F, 0.0F, 3.0F, 3.0F, 0.0F, false);
 
         bb_main = new ModelRenderer(this);
         bb_main.setPos(0.0F, 24.0F, 0.0F);
 
 
         RightPectoralFin_r1 = new ModelRenderer(this);
-        RightPectoralFin_r1.setPos(0.0F, 0.0F, 0.0F);
+        RightPectoralFin_r1.setPos(-1.1F, -4.8F, -0.6F);
         bb_main.addChild(RightPectoralFin_r1);
         setRotationAngle(RightPectoralFin_r1, 0.0F, -0.5236F, 0.0F);
-        RightPectoralFin_r1.texOffs(8, 12).addBox(-1.15F, -6.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, false);
+        RightPectoralFin_r1.texOffs(8, 12).addBox(0.1026F, -1.2F, -0.0304F, 0.0F, 2.0F, 2.0F, 0.0F, false);
 
         LeftPectoralFin_r1 = new ModelRenderer(this);
-        LeftPectoralFin_r1.setPos(0.0F, 0.0F, 0.0F);
+        LeftPectoralFin_r1.setPos(0.1F, -4.8F, -0.6F);
         bb_main.addChild(LeftPectoralFin_r1);
         setRotationAngle(LeftPectoralFin_r1, 0.0F, 0.5236F, 0.0F);
-        LeftPectoralFin_r1.texOffs(8, 12).addBox(0.25F, -6.0F, -0.5F, 0.0F, 2.0F, 2.0F, 0.0F, false);
+        LeftPectoralFin_r1.texOffs(8, 12).addBox(-0.1366F, -1.2F, -0.0304F, 0.0F, 2.0F, 2.0F, 0.0F, false);
 
         RightStreamerFin_r1 = new ModelRenderer(this);
         RightStreamerFin_r1.setPos(0.0F, 0.0F, 0.0F);
@@ -92,6 +92,9 @@ public class FreshwaterAngelfishModel<T extends FreshwaterAngelfishEntity> exten
         }
 
         this.BackFin.yRot = -f * 0.45F * MathHelper.sin(0.6F * ageInTicks);
+
+        this.RightPectoralFin_r1.yRot = -f * 0.15F * MathHelper.sin(0.2F * ageInTicks) - 0.3f;
+        this.LeftPectoralFin_r1.yRot = f * 0.15F * MathHelper.sin(0.2F * ageInTicks) + 0.3f;
     }
 
     @Override

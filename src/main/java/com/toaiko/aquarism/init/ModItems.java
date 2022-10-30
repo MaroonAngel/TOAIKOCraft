@@ -12,7 +12,7 @@ public class ModItems {
 
     // Eggs
     public static final RegistryObject<ForgeSpawnEggItem> FRESHWATER_ANGELFISH_SPAWN_EGG = ITEMS.register("freshwater_angelfish_spawn_egg",
-            () -> new ForgeSpawnEggItem(ModEntityType.FRESHWATER_ANGELFISH, 0xE1A68B, 0x99593B, new Item.Properties().tab(Aquarism.TAB)));
+            () -> new ForgeSpawnEggItem(ModEntityType.FRESHWATER_ANGELFISH, 0xFFFFFF, 0xFFFFFF, new Item.Properties().tab(Aquarism.TAB)));
 
     // Buckets
     //public static final RegistryObject<FishBucketItem> FRESHWATER_ANGELFISH_BUCKET = ITEMS.register("freshwater_angelfish_bucket",
