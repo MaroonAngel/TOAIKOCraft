@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "toaikocraft:item/freshwater_angelfish_spawn_egg"
+  }
+}

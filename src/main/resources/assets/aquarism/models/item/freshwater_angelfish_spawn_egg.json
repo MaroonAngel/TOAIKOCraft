@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "aquarism:item/freshwater_angelfish_spawn_egg"
-  }
-}
