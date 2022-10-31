@@ -94,7 +94,7 @@ public class FreshwaterAngelfishModel<T extends FreshwaterAngelfishEntity> exten
         this.BackFin.yRot = -f * 0.45F * MathHelper.sin(0.6F * ageInTicks);
 
         this.RightPectoralFin_r1.yRot = -f * 0.15F * MathHelper.sin(0.2F * ageInTicks) - 0.3f;
-        this.LeftPectoralFin_r1.yRot = f * 0.15F * MathHelper.sin(0.2F * ageInTicks) + 0.3f;
+        this.LeftPectoralFin_r1.yRot  =  f * 0.15F * MathHelper.sin(0.2F * ageInTicks) + 0.3f;
     }
 
     @Override

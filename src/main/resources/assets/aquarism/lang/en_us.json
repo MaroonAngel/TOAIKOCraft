@@ -1,3 +1,7 @@
 {
-  "entity.aquarism.freshwater_angelfish": "Freshwater Angelfish"
+  "entity.aquarism.freshwater_angelfish.koi": "Koi Freshwater Angelfish",
+  "entity.aquarism.freshwater_angelfish.striped": "Striped Freshwater Angelfish",
+  "entity.aquarism.freshwater_angelfish.black": "Black Freshwater Angelfish",
+  "entity.aquarism.freshwater_angelfish.marble": "Marble Freshwater Angelfish",
+  "entity.aquarism.freshwater_angelfish.koi_marble": "Koi Marble Freshwater Angelfish"
 }
