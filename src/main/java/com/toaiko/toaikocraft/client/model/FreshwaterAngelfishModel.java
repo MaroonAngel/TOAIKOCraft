@@ -44,6 +44,12 @@ public class FreshwaterAngelfishModel<T extends FreshwaterAngelfishEntity> exten
         bb_main = new ModelRenderer(this);
         bb_main.setPos(0.0F, 24.0F, 0.0F);
 
+        Body_r1 = new ModelRenderer(this);
+        Body_r1.setPos(0.0F, 0.0F, 0.0F);
+        bb_main.addChild(Body_r1);
+        setRotationAngle(Body_r1, -0.7854F, 0.0F, 0.0F);
+        Body_r1.texOffs(0, 7).addBox(-1.0F, -5.0F, -5.0F, 1.0F, 3.0F, 3.0F, 0.0F, false);
+
 
         RightPectoralFin_r1 = new ModelRenderer(this);
         RightPectoralFin_r1.setPos(-1.1F, -4.8F, -0.6F);
@@ -81,11 +87,7 @@ public class FreshwaterAngelfishModel<T extends FreshwaterAngelfishEntity> exten
         setRotationAngle(BottomFin_r1, -1.0908F, 0.0F, 0.0F);
         BottomFin_r1.texOffs(6, 1).addBox(-0.5F, -4.5F, -4.0F, 0.0F, 3.0F, 5.0F, 0.0F, false);
 
-        Body_r1 = new ModelRenderer(this);
-        Body_r1.setPos(0.0F, 0.0F, 0.0F);
-        bb_main.addChild(Body_r1);
-        setRotationAngle(Body_r1, -0.7854F, 0.0F, 0.0F);
-        Body_r1.texOffs(0, 7).addBox(-1.0F, -5.0F, -5.0F, 1.0F, 3.0F, 3.0F, 0.0F, false);
+
     }
 
     @Override
@@ -104,13 +106,13 @@ public class FreshwaterAngelfishModel<T extends FreshwaterAngelfishEntity> exten
 
     @Override
     public void renderToBuffer(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        GL11.glEnable(GL11.GL_BLEND);
-        GL11.glDisable(GL11.GL_CULL_FACE);
+        //GL11.glEnable(GL11.GL_BLEND);
+        //GL11.glDisable(GL11.GL_CULL_FACE);
         Body.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
         BackFin.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
         bb_main.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
-        GL11.glDisable(GL11.GL_BLEND);
-        GL11.glEnable(GL11.GL_CULL_FACE);
+        //GL11.glDisable(GL11.GL_BLEND);
+        //GL11.glEnable(GL11.GL_CULL_FACE);
     }
 
 
