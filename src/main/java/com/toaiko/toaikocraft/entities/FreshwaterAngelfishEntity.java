@@ -78,7 +78,10 @@ public class FreshwaterAngelfishEntity extends TOAIKOGroupFishEntity {
 
     public void readAdditionalSaveData(CompoundNBT tags) {
         super.readAdditionalSaveData(tags);
-        this.setVariant(tags.getInt("Variant"));
+        int vari = tags.getInt("Variant");
+        if (vari > Type.values().length - 1)
+            vari = 0;
+        this.setVariant(vari);
     }
 
     public int getVariant() {
@@ -91,6 +94,9 @@ public class FreshwaterAngelfishEntity extends TOAIKOGroupFishEntity {
 
     @OnlyIn(Dist.CLIENT)
     public ResourceLocation getVariantTextureLocation() {
+        if (this.getVariant() > Type.values().length) {
+            this.setVariant(0);
+        }
         return VARIANT_TEXTURE_LOCATIONS[this.getVariant()];
     }
 

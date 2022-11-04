@@ -27,7 +27,7 @@ public class OscarRenderer extends MobRenderer<OscarEntity, OscarModel<OscarEnti
 
     protected void setupRotations(OscarEntity fish, MatrixStack matrices, float xRot, float yRot, float zRot) {
         super.setupRotations(fish, matrices, xRot, yRot, zRot);
-        float f = 4.3F * MathHelper.sin(0.6F * xRot);
+        float f = 2F * MathHelper.cos(0.4F * xRot);
         matrices.mulPose(Vector3f.YP.rotationDegrees(f));
         if (!fish.isInWater()) {
             matrices.translate((double)0.1F, (double)0.1F, (double)-0.1F);

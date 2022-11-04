@@ -1,4 +1,6 @@
 {
+  "item.toaikocraft.freshwater_angelfish_spawn_egg": "Freshwater Angelfish Spawn Egg",
+  "entity.toaikocraft.freshwater_angelfish": "Freshwater Angelfish",
   "entity.toaikocraft.freshwater_angelfish.albino": "Albino Freshwater Angelfish",
   "entity.toaikocraft.freshwater_angelfish.black": "Black Freshwater Angelfish",
   "entity.toaikocraft.freshwater_angelfish.blue_pinoy": "Blue Pinoy Freshwater Angelfish",
@@ -17,5 +19,23 @@
   "entity.toaikocraft.freshwater_angelfish.red_devil": "Red Devil Freshwater Angelfish",
   "entity.toaikocraft.freshwater_angelfish.smokey": "Smokey Freshwater Angelfish",
   "entity.toaikocraft.freshwater_angelfish.striped": "Striped Freshwater Angelfish",
-  "entity.toaikocraft.freshwater_angelfish.sunset": "Sunset Freshwater Angelfish"
+  "entity.toaikocraft.freshwater_angelfish.sunset": "Sunset Freshwater Angelfish",
+  "item.toaikocraft.oscar_spawn_egg": "Oscar Spawn Egg",
+  "entity.toaikocraft.oscar": "Oscar",
+  "entity.toaikocraft.oscar.albino_copper": "Albino Copper Oscar",
+  "entity.toaikocraft.oscar.albino_copper_tiger": "Albino Copper Tiger Oscar",
+  "entity.toaikocraft.oscar.albino_red": "Albino Red Oscar",
+  "entity.toaikocraft.oscar.albino_red_tiger": "Albino Red Tiger Oscar",
+  "entity.toaikocraft.oscar.black": "Black Oscar",
+  "entity.toaikocraft.oscar.bumble_bee": "Bumble Bee Oscar",
+  "entity.toaikocraft.oscar.copper": "Copper Oscar",
+  "entity.toaikocraft.oscar.copper_tiger": "Copper Tiger Oscar",
+  "entity.toaikocraft.oscar.golden": "Golden Oscar",
+  "entity.toaikocraft.oscar.lemon": "Lemon Oscar",
+  "entity.toaikocraft.oscar.lemon_tiger": "Lemon Tiger Oscar",
+  "entity.toaikocraft.oscar.red": "Red Oscar",
+  "entity.toaikocraft.oscar.red_tiger": "Red Tiger Oscar",
+  "entity.toaikocraft.oscar.super_red": "Super Red Oscar",
+  "entity.toaikocraft.oscar.wild": "Wild Oscar"
+
 }
