@@ -6,15 +6,18 @@ import com.toaiko.toaikocraft.entity.TOAIKOGroupFishEntity;
 import com.toaiko.toaikocraft.item.TOAIKOFishBucketItem;
 import com.toaiko.toaikocraft.item.TOAIKOFishItem;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.passive.CatEntity;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.FishBucketItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import com.toaiko.toaikocraft.TOAIKOCraft;
 
+import java.util.ArrayList;
 import java.util.function.Supplier;
 
 public class TOAIKOItems {
@@ -40,6 +43,11 @@ public class TOAIKOItems {
         TOAIKOFishBucketItem fishBucket = new TOAIKOFishBucketItem(fishEntity, Fluids.WATER, (new Item.Properties()).stacksTo(1).tab(TOAIKOCraft.TAB));
         ITEMS.register(type.name().toLowerCase() + "_bucket", () -> fishBucket);
         TOAIKOGroupFishEntity.BUCKETS.put(fishEntity, fishBucket);
+
+        ArrayList<Ingredient.IItemList> test = new ArrayList<Ingredient.IItemList>();
+
+        //Ingredient tempt_ingredients = CatEntity.TEMPT_INGREDIENT;
+        //CatEntity.TEMPT_INGREDIENT = Ingredient.merge(tempt_ingredients, Ingredient.of(rawFish.get().getDefaultInstance()));
 
         return rawFish;
     }

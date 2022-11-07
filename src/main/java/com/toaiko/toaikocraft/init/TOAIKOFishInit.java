@@ -5,11 +5,15 @@ import com.toaiko.toaikocraft.TOAIKOCraft;
 import com.toaiko.toaikocraft.entity.FishType;
 import com.toaiko.toaikocraft.entity.TOAIKOGroupFishEntity;
 import com.toaiko.toaikocraft.item.TOAIKOFishBucketItem;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
+import net.minecraft.entity.passive.CatEntity;
 import net.minecraft.fluid.Fluids;
+import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.Item;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -42,6 +46,12 @@ public class TOAIKOFishInit {
     public static void buildFishAttributes(EntityAttributeCreationEvent event) {
         for (EntityType<TOAIKOGroupFishEntity> entity : TOAIKOFishInit.fishEntities) {
             event.put(entity, TOAIKOGroupFishEntity.setCustomAttributes(TOAIKOGroupFishEntity.TYPES.get(entity)).build());
+        }
+    }
+
+    public static void addCatTags() {
+        for (EntityType<TOAIKOGroupFishEntity> fish : fishEntities) {
+
         }
     }
 }

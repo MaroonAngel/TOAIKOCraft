@@ -21,7 +21,7 @@ public class OscarModel<T extends TOAIKOGroupFishEntity> extends EntityModel<T> 
         texHeight = 16;
 
         Body = new ModelRenderer(this);
-        Body.setPos(0.0F, 21.1F, 1.4F);
+        Body.setPos(0.0F, 21.1F, 0.4F);
         Body.texOffs(0, 0).addBox(-0.5F, -2.0F, -2.5F, 1.0F, 3.0F, 6.0F, 0.0F, false);
         Body.texOffs(8, 0).addBox(-0.5F, -1.5F, -3.5F, 1.0F, 2.0F, 1.0F, 0.0F, false);
         Body.texOffs(0, 7).addBox(0.0F, 1.0F, 0.5F, 0.0F, 2.0F, 4.0F, 0.0F, false);

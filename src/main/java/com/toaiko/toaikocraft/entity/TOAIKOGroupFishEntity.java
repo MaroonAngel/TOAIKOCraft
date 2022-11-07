@@ -9,7 +9,13 @@ import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.ai.goal.AvoidEntityGoal;
+import net.minecraft.entity.ai.goal.FollowSchoolLeaderGoal;
+import net.minecraft.entity.ai.goal.PanicGoal;
+import net.minecraft.entity.ai.goal.RandomSwimmingGoal;
+import net.minecraft.entity.passive.fish.AbstractFishEntity;
 import net.minecraft.entity.passive.fish.AbstractGroupFishEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -17,10 +23,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.util.*;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
@@ -36,11 +39,21 @@ public class TOAIKOGroupFishEntity extends AbstractGroupFishEntity {
     public static final HashMap<EntityType<TOAIKOGroupFishEntity>, TOAIKOFishBucketItem> BUCKETS = new HashMap<>();
     public static final HashMap<EntityType<TOAIKOGroupFishEntity>, FishType> TYPES = new HashMap<>();
 
-    private static final DataParameter<String> DATA_ID_TYPE_VARIANT = EntityDataManager.defineId(TOAIKOGroupFishEntity.class, DataSerializers.STRING);;
-    private boolean isSchool = true;
+    private static final DataParameter<String> DATA_ID_TYPE_VARIANT = EntityDataManager.defineId(TOAIKOGroupFishEntity.class, DataSerializers.STRING);
 
     public TOAIKOGroupFishEntity(EntityType<? extends AbstractGroupFishEntity> type, World world) {
         super(type, world);
+    }
+
+    @Override
+    protected void registerGoals() {
+
+        if (getFishType().getSchool()) {
+            this.goalSelector.addGoal(5, new FollowSchoolLeaderGoal(this));
+        }
+        this.goalSelector.addGoal(0, new PanicGoal(this, 1.25D));
+        this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, PlayerEntity.class, 8.0F, 1.6D, 1.4D, EntityPredicates.NO_SPECTATORS::test));
+        this.goalSelector.addGoal(4, new SwimGoal(this));
     }
 
     public static AttributeModifierMap.MutableAttribute setCustomAttributes(FishType type) {
@@ -132,11 +145,29 @@ public class TOAIKOGroupFishEntity extends AbstractGroupFishEntity {
         return SoundEvents.TROPICAL_FISH_FLOP;
     }
 
+    @Override
+    public int getMaxSchoolSize() {
+        return this.getFishType().getMaxSchoolSize();
+    }
+
     public boolean isMaxGroupSizeReached(int p_204209_1_) {
-        return !this.isSchool;
+        return !this.getFishType().getSchool();
     }
 
     public boolean removeWhenFarAway(double p_213397_1_) {
         return false; // DANGEROUS; REMOVE THIS IF THEY SPAWN NATURALLY
+    }
+
+    static class SwimGoal extends RandomSwimmingGoal {
+        private final AbstractFishEntity fish;
+
+        public SwimGoal(AbstractFishEntity p_i48856_1_) {
+            super(p_i48856_1_, 1.0D, 40);
+            this.fish = p_i48856_1_;
+        }
+
+        public boolean canUse() {
+            return true && super.canUse();
+        }
     }
 }

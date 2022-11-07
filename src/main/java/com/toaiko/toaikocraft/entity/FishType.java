@@ -5,7 +5,7 @@ import com.toaiko.toaikocraft.client.model.OscarModel;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 
 public enum FishType {
-    FRESHWATER_ANGELFISH(0.3f, 0.4f, 2.5D, 1.0D, 3.5f, 0.6f,
+    FRESHWATER_ANGELFISH(0.3f, 0.26f, 2.5D, 1.0D, 3.5f, 0.6f, true, 2,
         new FreshwaterAngelfishModel<>(), new String[]{
             "albino",
             "black",
@@ -28,7 +28,7 @@ public enum FishType {
             "sunset"
     }),
 
-    OSCAR(0.5f, 0.3f, 7.5d, 0.75d, 2.0f, 0.4f,
+    OSCAR(0.4f, 0.3f, 7.5d, 0.75d, 2.0f, 0.4f, false, 0,
         new OscarModel<>(), new String[] {
             "albino_copper",
             "albino_copper_tiger",
@@ -53,10 +53,12 @@ public enum FishType {
     private final double speed;
     private final float wiggleAmp;
     private final float wiggleFreq;
+    private final boolean school;
+    private final int maxSchoolSize;
     private final EntityModel<TOAIKOGroupFishEntity> model;
     private final String[] variants;
 
-    FishType(float width, float height, double health, double speed, float wiggleAmp, float wiggleFreq, EntityModel<TOAIKOGroupFishEntity> model, String[] variants) {
+    FishType(float width, float height, double health, double speed, float wiggleAmp, float wiggleFreq, boolean school, int maxSchoolSize, EntityModel<TOAIKOGroupFishEntity> model, String[] variants) {
         this.width = width;
         this.height = height;
         this.model = model;
@@ -65,6 +67,8 @@ public enum FishType {
         this.speed = speed;
         this.wiggleAmp = wiggleAmp;
         this.wiggleFreq = wiggleFreq;
+        this.school = school;
+        this.maxSchoolSize = maxSchoolSize;
     }
     public float getWidth() {
         return width;
@@ -76,6 +80,8 @@ public enum FishType {
     public double getSwimSpeed() { return speed; }
     public float getWiggleAmp() { return wiggleAmp; }
     public float getWiggleFreq() { return wiggleFreq; }
+    public boolean getSchool() { return school; }
+    public int getMaxSchoolSize() { return maxSchoolSize; }
     public String[] getVariants() {
         return variants;
     }
