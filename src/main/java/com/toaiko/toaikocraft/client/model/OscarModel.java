@@ -2,7 +2,6 @@ package com.toaiko.toaikocraft.client.model;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
-import com.toaiko.toaikocraft.entity.OscarEntity;
 import com.toaiko.toaikocraft.entity.TOAIKOGroupFishEntity;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;

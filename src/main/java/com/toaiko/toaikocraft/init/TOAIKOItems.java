@@ -1,14 +1,11 @@
 package com.toaiko.toaikocraft.init;
 
 import com.toaiko.toaikocraft.entity.FishType;
-import com.toaiko.toaikocraft.entity.FreshwaterAngelfishEntity;
 import com.toaiko.toaikocraft.entity.TOAIKOGroupFishEntity;
 import com.toaiko.toaikocraft.item.TOAIKOFishBucketItem;
 import com.toaiko.toaikocraft.item.TOAIKOFishItem;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.passive.CatEntity;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.item.FishBucketItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraftforge.common.ForgeSpawnEggItem;
@@ -18,14 +15,13 @@ import net.minecraftforge.registries.ForgeRegistries;
 import com.toaiko.toaikocraft.TOAIKOCraft;
 
 import java.util.ArrayList;
-import java.util.function.Supplier;
 
 public class TOAIKOItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, TOAIKOCraft.MOD_ID);
 
     // Fish
-    public static final RegistryObject<Item> OSCAR = registerFish(FishType.OSCAR);
     public static final RegistryObject<Item> FRESHWATER_ANGELFISH = registerFish(FishType.FRESHWATER_ANGELFISH);
+    public static final RegistryObject<Item> OSCAR = registerFish(FishType.OSCAR);
 
     public static RegistryObject<Item> registerFish(FishType type) {
         String name = type.name().toLowerCase();

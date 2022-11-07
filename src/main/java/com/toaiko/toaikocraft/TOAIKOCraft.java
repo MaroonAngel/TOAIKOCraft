@@ -1,17 +1,8 @@
 package com.toaiko.toaikocraft;
 
-import com.toaiko.toaikocraft.entity.FreshwaterAngelfishEntity;
-import com.toaiko.toaikocraft.entity.TOAIKOGroupFishEntity;
 import com.toaiko.toaikocraft.init.TOAIKOEntityTypes;
-import com.toaiko.toaikocraft.init.TOAIKOFishInit;
 import com.toaiko.toaikocraft.init.TOAIKOItems;
-import com.toaiko.toaikocraft.item.TOAIKOFishBucketItem;
-import com.toaiko.toaikocraft.item.TOAIKOFishItem;
 import net.minecraft.block.Block;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -19,7 +10,6 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DeferredWorkQueue;
-import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.*;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;

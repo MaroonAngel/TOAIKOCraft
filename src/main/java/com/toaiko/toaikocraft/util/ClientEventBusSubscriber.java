@@ -1,9 +1,7 @@
 package com.toaiko.toaikocraft.util;
 
 import com.toaiko.toaikocraft.TOAIKOCraft;
-import com.toaiko.toaikocraft.client.render.FreshwaterAngelfishRenderer;
 import com.toaiko.toaikocraft.client.render.TOAIKOGroupFishRenderer;
-import com.toaiko.toaikocraft.entity.TOAIKOGroupFishEntity;
 import com.toaiko.toaikocraft.init.TOAIKOFishInit;
 import net.minecraft.entity.EntityType;
 import net.minecraftforge.api.distmarker.Dist;
