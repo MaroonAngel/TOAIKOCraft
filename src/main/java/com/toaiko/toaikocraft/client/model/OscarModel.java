@@ -2,12 +2,13 @@ package com.toaiko.toaikocraft.client.model;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
-import com.toaiko.toaikocraft.entities.OscarEntity;
+import com.toaiko.toaikocraft.entity.OscarEntity;
+import com.toaiko.toaikocraft.entity.TOAIKOGroupFishEntity;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
 
-public class OscarModel<T extends OscarEntity> extends EntityModel<T> {
+public class OscarModel<T extends TOAIKOGroupFishEntity> extends EntityModel<T> {
     private final ModelRenderer Body;
     private final ModelRenderer Tail;
     private final ModelRenderer TailFin;

@@ -1,28 +1,31 @@
 package com.toaiko.toaikocraft;
 
-import com.toaiko.toaikocraft.entities.FreshwaterAngelfishEntity;
-import com.toaiko.toaikocraft.entities.OscarEntity;
-import com.toaiko.toaikocraft.init.ModEntityType;
-import com.toaiko.toaikocraft.init.ModItems;
+import com.toaiko.toaikocraft.entity.FreshwaterAngelfishEntity;
+import com.toaiko.toaikocraft.entity.TOAIKOGroupFishEntity;
+import com.toaiko.toaikocraft.init.TOAIKOEntityTypes;
+import com.toaiko.toaikocraft.init.TOAIKOFishInit;
+import com.toaiko.toaikocraft.init.TOAIKOItems;
+import com.toaiko.toaikocraft.item.TOAIKOFishBucketItem;
+import com.toaiko.toaikocraft.item.TOAIKOFishItem;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
+import net.minecraft.fluid.Fluids;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DeferredWorkQueue;
-import net.minecraftforge.fml.InterModComms;
+import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.*;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.stream.Collectors;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod("toaikocraft")
@@ -34,22 +37,21 @@ public class TOAIKOCraft
     public static final ItemGroup TAB = new ItemGroup("toaikocraftTab") {
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(ModItems.FRESHWATER_ANGELFISH_SPAWN_EGG.get());
+            return new ItemStack(TOAIKOItems.FRESHWATER_ANGELFISH.get());
         }
     };
 
     public TOAIKOCraft() {
-        // Register the setup method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        // Register the enqueueIMC method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
-        // Register the processIMC method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
-        // Register the doClientStuff method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
+        final IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        ModItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        ModEntityType.ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        eventBus.addListener(this::setup);
+        eventBus.addListener(this::enqueueIMC);
+        eventBus.addListener(this::processIMC);
+        eventBus.addListener(this::doClientStuff);
+
+        TOAIKOEntityTypes.ENTITY_TYPES.register(eventBus);
+        TOAIKOItems.ITEMS.register(eventBus);
+
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -57,12 +59,14 @@ public class TOAIKOCraft
 
     private void setup(final FMLCommonSetupEvent event)
     {
-        // some preinit code
         LOGGER.info("TOAIKOCraft: Initializing...");
-
         DeferredWorkQueue.runLater(() -> {
-            GlobalEntityTypeAttributes.put(ModEntityType.FRESHWATER_ANGELFISH.get(), FreshwaterAngelfishEntity.setCustomAttributes().build());
-            GlobalEntityTypeAttributes.put(ModEntityType.OSCAR.get(), OscarEntity.setCustomAttributes().build());
+            //GlobalEntityTypeAttributes.put(TOAIKOEntityTypes.FRESHWATER_ANGELFISH.get(), FreshwaterAngelfishEntity.setCustomAttributes().build());
+            //GlobalEntityTypeAttributes.put(TOAIKOEntityTypes.OSCAR.get(), OscarEntity.setCustomAttributes().build());
+            //for (EntityType<TOAIKOGroupFishEntity> entity : TOAIKOFishInit.fishEntities) {
+
+            //}
+            // just get it from fishinit and for each the list
         });
     }
 
@@ -73,6 +77,8 @@ public class TOAIKOCraft
 
     private void enqueueIMC(final InterModEnqueueEvent event)
     {
+        //GlobalEntityTypeAttributes.put(ModEntityTypes.FRESHWATER_ANGELFISH.get(), FreshwaterAngelfishEntity.setCustomAttributes().build());
+        //GlobalEntityTypeAttributes.put(ModEntityTypes.OSCAR.get(), OscarEntity.setCustomAttributes().build());
         // some example code to dispatch IMC to another mod
         //InterModComms.sendTo("examplemod", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
     }

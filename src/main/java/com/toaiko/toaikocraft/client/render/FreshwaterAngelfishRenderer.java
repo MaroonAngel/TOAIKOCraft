@@ -1,19 +1,14 @@
 package com.toaiko.toaikocraft.client.render;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
-import com.mojang.blaze3d.vertex.IVertexBuilder;
 import com.toaiko.toaikocraft.client.model.FreshwaterAngelfishModel;
-import com.toaiko.toaikocraft.entities.FreshwaterAngelfishEntity;
-import net.minecraft.client.renderer.IRenderTypeBuffer;
+import com.toaiko.toaikocraft.entity.FreshwaterAngelfishEntity;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.client.renderer.entity.LivingRenderer;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.entity.monster.SlimeEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3f;
-import org.lwjgl.opengl.GL11;
 
 import javax.annotation.Nullable;
 

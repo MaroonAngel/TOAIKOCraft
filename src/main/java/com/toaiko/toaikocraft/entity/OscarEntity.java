@@ -1,4 +1,4 @@
-package com.toaiko.toaikocraft.entities;
+package com.toaiko.toaikocraft.entity;
 
 import com.toaiko.toaikocraft.TOAIKOCraft;
 import net.minecraft.entity.EntityType;
@@ -7,7 +7,6 @@ import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.passive.fish.AbstractFishEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
@@ -15,7 +14,6 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
@@ -25,7 +23,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import javax.annotation.Nullable;
 import java.util.Locale;
 
-public class OscarEntity extends TOAIKOFishEntity {
+public class OscarEntity extends TOAIKOGroupFishEntity {
 
     private static final String TEXTURE_PATH = "textures/entity/fish/oscar/";
     private static final DataParameter<Integer> DATA_ID_TYPE_VARIANT = EntityDataManager.defineId(OscarEntity.class, DataSerializers.INT);
@@ -68,7 +66,7 @@ public class OscarEntity extends TOAIKOFishEntity {
 
     public void addAdditionalSaveData(CompoundNBT p_213281_1_) {
         super.addAdditionalSaveData(p_213281_1_);
-        p_213281_1_.putInt("Variant", this.getVariant());
+        p_213281_1_.putInt("Variant", 3);
     }
 
     public void readAdditionalSaveData(CompoundNBT tags) {
@@ -76,8 +74,8 @@ public class OscarEntity extends TOAIKOFishEntity {
         this.setVariant(tags.getInt("Variant"));
     }
 
-    public int getVariant() {
-        return this.entityData.get(DATA_ID_TYPE_VARIANT);
+    public String getVariant() {
+        return "";
     }
 
     public void setVariant(int variant) {
@@ -86,13 +84,13 @@ public class OscarEntity extends TOAIKOFishEntity {
 
     @OnlyIn(Dist.CLIENT)
     public ResourceLocation getVariantTextureLocation() {
-        return VARIANT_TEXTURE_LOCATIONS[this.getVariant()];
+        return VARIANT_TEXTURE_LOCATIONS[3];
     }
 
     protected void saveToBucketTag(ItemStack bucket) {
         super.saveToBucketTag(bucket);
         CompoundNBT compoundnbt = bucket.getOrCreateTag();
-        compoundnbt.putInt("BucketVariantTag", this.getVariant());
+        compoundnbt.putInt("BucketVariantTag", 8);
     }
 
     @Nullable

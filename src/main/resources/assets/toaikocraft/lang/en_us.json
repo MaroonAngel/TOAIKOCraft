@@ -1,4 +1,7 @@
 {
+  "itemGroup.toaikocraftTab": "TOAIKOCraft",
+  "item.toaikocraft.freshwater_angelfish": "Freshwater Angelfish",
+  "item.toaikocraft.freshwater_angelfish_bucket": "Bucket of Freshwater Angelfish",
   "item.toaikocraft.freshwater_angelfish_spawn_egg": "Freshwater Angelfish Spawn Egg",
   "entity.toaikocraft.freshwater_angelfish": "Freshwater Angelfish",
   "entity.toaikocraft.freshwater_angelfish.albino": "Albino Freshwater Angelfish",
@@ -20,6 +23,8 @@
   "entity.toaikocraft.freshwater_angelfish.smokey": "Smokey Freshwater Angelfish",
   "entity.toaikocraft.freshwater_angelfish.striped": "Striped Freshwater Angelfish",
   "entity.toaikocraft.freshwater_angelfish.sunset": "Sunset Freshwater Angelfish",
+  "item.toaikocraft.oscar": "Oscar",
+  "item.toaikocraft.oscar_bucket": "Bucket of Oscar",
   "item.toaikocraft.oscar_spawn_egg": "Oscar Spawn Egg",
   "entity.toaikocraft.oscar": "Oscar",
   "entity.toaikocraft.oscar.albino_copper": "Albino Copper Oscar",
@@ -37,5 +42,4 @@
   "entity.toaikocraft.oscar.red_tiger": "Red Tiger Oscar",
   "entity.toaikocraft.oscar.super_red": "Super Red Oscar",
   "entity.toaikocraft.oscar.wild": "Wild Oscar"
-
 }

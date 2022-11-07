@@ -3,16 +3,13 @@ package com.toaiko.toaikocraft.client.model;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
-import com.toaiko.toaikocraft.entities.FreshwaterAngelfishEntity;
-import net.minecraft.client.renderer.IRenderTypeBuffer;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.LivingRenderer;
+import com.toaiko.toaikocraft.entity.FreshwaterAngelfishEntity;
+import com.toaiko.toaikocraft.entity.TOAIKOGroupFishEntity;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
-import org.lwjgl.opengl.GL11;
 
-public class FreshwaterAngelfishModel<T extends FreshwaterAngelfishEntity> extends EntityModel<T> {
+public class FreshwaterAngelfishModel<T extends TOAIKOGroupFishEntity> extends EntityModel<T> {
     private final ModelRenderer Body;
     private final ModelRenderer BackFin;
     private final ModelRenderer bb_main;
@@ -30,7 +27,7 @@ public class FreshwaterAngelfishModel<T extends FreshwaterAngelfishEntity> exten
         texHeight = 16;
 
         Body = new ModelRenderer(this);
-        Body.setPos(0.0F, 24.0F, 0.0F);
+        Body.setPos(0.0F, 16.0F, 0.0F);
 
         BackFin = new ModelRenderer(this);
         BackFin.setPos(-0.5F, 19.0F, 2.0F);
@@ -92,15 +89,20 @@ public class FreshwaterAngelfishModel<T extends FreshwaterAngelfishEntity> exten
 
     @Override
     public void setupAnim(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-        float f = 1.0F;
+        float state = 1.0F;
         if (!entityIn.isInWater()) {
-            f = 1.5F;
+            state = 1.5F;
         }
 
-        this.BackFin.yRot = -f * 0.45F * MathHelper.sin(0.6F * ageInTicks);
+        this.Body.xRot = 1.1F * MathHelper.sin(0.6F * ageInTicks); // was 4.3f
 
-        this.RightPectoralFin_r1.yRot = -f * 0.15F * MathHelper.sin(0.2F * ageInTicks) - 0.3f;
-        this.LeftPectoralFin_r1.yRot  =  f * 0.15F * MathHelper.sin(0.2F * ageInTicks) + 0.3f;
+        //float f = 4.3F * MathHelper.sin(0.6F * xRot);
+        //matrices.mulPose(Vector3f.YP.rotationDegrees(f));
+
+        this.BackFin.yRot = -state * 0.3F * MathHelper.sin(0.6F * ageInTicks);
+
+        this.RightPectoralFin_r1.yRot = -state * 0.15F * MathHelper.cos(0.2F * ageInTicks) - 0.3f;
+        this.LeftPectoralFin_r1.yRot  = -state * 0.15F * -MathHelper.cos(0.2F * ageInTicks) + 0.3f;
     }
 
 

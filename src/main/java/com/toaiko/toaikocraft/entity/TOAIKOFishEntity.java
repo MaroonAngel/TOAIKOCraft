@@ -1,4 +1,4 @@
-package com.toaiko.toaikocraft.entities;
+package com.toaiko.toaikocraft.entity;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.fish.AbstractFishEntity;
@@ -9,11 +9,21 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
 
-public abstract class TOAIKOFishEntity extends AbstractFishEntity {
+public class TOAIKOFishEntity extends AbstractFishEntity {
 
     public TOAIKOFishEntity(EntityType<? extends AbstractFishEntity> type, World world) {
         super(type, world);
     }
+
+
+
+
+
+
+
+
+
+
 
     protected ItemStack getBucketItemStack() {
         return new ItemStack(Items.WATER_BUCKET);
@@ -22,15 +32,12 @@ public abstract class TOAIKOFishEntity extends AbstractFishEntity {
     protected SoundEvent getAmbientSound() {
         return SoundEvents.TROPICAL_FISH_AMBIENT;
     }
-
     protected SoundEvent getDeathSound() {
         return SoundEvents.TROPICAL_FISH_DEATH;
     }
-
     protected SoundEvent getHurtSound(DamageSource p_184601_1_) {
         return SoundEvents.TROPICAL_FISH_HURT;
     }
-
     protected SoundEvent getFlopSound() {
         return SoundEvents.TROPICAL_FISH_FLOP;
     }

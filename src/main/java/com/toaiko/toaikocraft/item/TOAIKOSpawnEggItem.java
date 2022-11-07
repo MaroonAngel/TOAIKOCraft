@@ -1,4 +1,4 @@
-package com.toaiko.toaikocraft.items;
+package com.toaiko.toaikocraft.item;
 
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.dispenser.DefaultDispenseItemBehavior;
@@ -17,12 +17,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ModSpawnEggItem extends SpawnEggItem {
+public class TOAIKOSpawnEggItem extends SpawnEggItem {
 
-    protected static final List<ModSpawnEggItem> UNADDED_EGGS = new ArrayList<>();
+    protected static final List<TOAIKOSpawnEggItem> UNADDED_EGGS = new ArrayList<>();
     private final Lazy<? extends EntityType<?>> entityTypeSupplier;
 
-    public ModSpawnEggItem(final RegistryObject<? extends EntityType<?>> entityTypeSupplier, int primaryColor, int secondaryColor, Properties properties) {
+    public TOAIKOSpawnEggItem(final RegistryObject<? extends EntityType<?>> entityTypeSupplier, int primaryColor, int secondaryColor, Properties properties) {
         super(null, primaryColor, secondaryColor, properties);
         this.entityTypeSupplier = Lazy.of(entityTypeSupplier::get);
         UNADDED_EGGS.add(this);

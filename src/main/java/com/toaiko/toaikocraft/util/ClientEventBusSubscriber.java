@@ -2,9 +2,10 @@ package com.toaiko.toaikocraft.util;
 
 import com.toaiko.toaikocraft.TOAIKOCraft;
 import com.toaiko.toaikocraft.client.render.FreshwaterAngelfishRenderer;
-import com.toaiko.toaikocraft.client.render.OscarRenderer;
-import com.toaiko.toaikocraft.entities.OscarEntity;
-import com.toaiko.toaikocraft.init.ModEntityType;
+import com.toaiko.toaikocraft.client.render.TOAIKOGroupFishRenderer;
+import com.toaiko.toaikocraft.entity.TOAIKOGroupFishEntity;
+import com.toaiko.toaikocraft.init.TOAIKOFishInit;
+import net.minecraft.entity.EntityType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -16,7 +17,10 @@ public class ClientEventBusSubscriber {
 
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
-        RenderingRegistry.registerEntityRenderingHandler(ModEntityType.OSCAR.get(), OscarRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(ModEntityType.FRESHWATER_ANGELFISH.get(), FreshwaterAngelfishRenderer::new);
+        //RenderingRegistry.registerEntityRenderingHandler(TOAIKOEntityTypes.FRESHWATER_ANGELFISH.get(), FreshwaterAngelfishRenderer::new);
+        //RenderingRegistry.registerEntityRenderingHandler(TOAIKOEntityTypes.OSCAR.get(), OscarRenderer::new);
+        for (EntityType fish : TOAIKOFishInit.fishEntities) {
+            RenderingRegistry.registerEntityRenderingHandler(fish, TOAIKOGroupFishRenderer::new);
+        }
     }
 }
